@@ -5,6 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
+import { DataProvider } from "./contexts/dataContext";
 
 
 // Call make Server
@@ -13,7 +14,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <App />
+      <DataProvider>
+        <App />
+    </DataProvider>
     </Router>
     
   </React.StrictMode>,
