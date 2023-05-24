@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import {Quest,Headphones,Glasses} from '../../assets'
+import {Quest1,QuestPro,RaybanRound, RaybanMeteor,LogitechHeadphones,SoundcoreEarbuds} from '../../assets'
 
 /**
  * Product Database can be added here.
@@ -12,42 +12,42 @@ export const products = [
     _id: uuid(),
     title: "Quest1",
     price: "5000",
-    image: Quest,
+    image: Quest1,
     categoryName: "virtual-reality",
   },
   {
     _id: uuid(),
     title: "Quest Pro",
     price: "3000",
-    image: Quest,
+    image: QuestPro,
     categoryName: "virtual-reality",
   },
   {
     _id: uuid(),
-    title: "Aviator Classic",
+    title: "Ray-Ban Round",
     price: "1000",
-    image: Glasses,
+    image: RaybanRound,
     categoryName: "smart-glasses",
   },
   {
     _id: uuid(),
-    title: "Erika Classic",
+    title: "Ray-Ban Meteor",
     price: "5000",
-    image: Glasses,
+    image: RaybanMeteor,
     categoryName: "smart-glasses",
   },
   {
     _id: uuid(),
-    title: "Sony X200",
+    title: "Logitech G PRO Gaming Headset",
     price: "3000",
-    image: Headphones,
+    image: LogitechHeadphones,
     categoryName: "soundzy",
   },
   {
     _id: uuid(),
-    title: "Sony X300",
+    title: "Soundcore VR Earbuds",
     price: "1000",
-    image: Headphones,
+    image: SoundcoreEarbuds,
     categoryName: "soundzy",
   },
 ];
