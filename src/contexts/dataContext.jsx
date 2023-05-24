@@ -7,6 +7,7 @@ export const DataContext = createContext();
 const reducerFunction =(state,action)=>{
     switch(action.type){
         case 'CATEGORIES': return {...state, categories:action.payload}
+        case 'PRODUCTS' : return {...state, products: action.payload}
         default : return state;
     }
 
@@ -33,8 +34,19 @@ export function DataProvider({children}){
         }
     }
 
+    const getProducts = async () =>{
+        try{
+           const {data,status} = await axios.get('/api/products');
+           if(status===200)
+            dispatch({type:'PRODUCTS', payload: data.products})
+        }catch(e){
+            console.log(e);
+        }
+    }
+
     useEffect(()=>{
         getCategories();
+        getProducts();
     },[]);
 
 

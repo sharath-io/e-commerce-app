@@ -5,9 +5,9 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { DataProvider } from "./contexts/dataContext";
+import { DataProvider, DataContext } from "./contexts/dataContext";
 
-
+export {DataContext};
 // Call make Server
 makeServer();
 
