@@ -1,30 +1,53 @@
 import { v4 as uuid } from "uuid";
+import {Quest,Headphones,Glasses} from '../../assets'
 
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes
  * */
 
+
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
+    title: "Quest1",
     price: "5000",
-    categoryName: "non-fiction",
+    image: Quest,
+    categoryName: "virtual-reality",
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
+    title: "Quest Pro",
     price: "3000",
-    categoryName: "horror",
+    image: Quest,
+    categoryName: "virtual-reality",
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
+    title: "Aviator Classic",
     price: "1000",
-    categoryName: "fiction",
+    image: Glasses,
+    categoryName: "smart-glasses",
+  },
+  {
+    _id: uuid(),
+    title: "Erika Classic",
+    price: "5000",
+    image: Glasses,
+    categoryName: "smart-glasses",
+  },
+  {
+    _id: uuid(),
+    title: "Sony X200",
+    price: "3000",
+    image: Headphones,
+    categoryName: "soundzy",
+  },
+  {
+    _id: uuid(),
+    title: "Sony X300",
+    price: "1000",
+    image: Headphones,
+    categoryName: "soundzy",
   },
 ];

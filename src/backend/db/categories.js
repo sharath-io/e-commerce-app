@@ -4,24 +4,30 @@ import { v4 as uuid } from "uuid";
  * Category Database can be added here.
  * You can add category of your wish with different attributes
  * */
-
+import {Quest,Headphones,Glasses} from '../../assets'
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "virtual-reality",
+    image: Quest,
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    'description 1',
+      // "Get your physical devices for virtual world",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "smart-glasses",
+    image: Glasses,
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    'description 2',
+      // "Smart glasses designed to keep you in the moment",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "soundzy",
+    image: Headphones,
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    'description 3',
+      // "Best in Sound Quality",
   },
 ];
