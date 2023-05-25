@@ -38,16 +38,16 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Logitech G PRO Gaming Headset",
-    price: "3000",
-    image: LogitechHeadphones,
-    categoryName: "soundzy",
-  },
-  {
-    _id: uuid(),
     title: "Soundcore VR Earbuds",
     price: "1000",
     image: SoundcoreEarbuds,
     categoryName: "soundzy",
   },
+  {
+    _id: uuid(),
+    title: "Logitech G PRO Gaming Headset",
+    price: "3000",
+    image: LogitechHeadphones,
+    categoryName: "soundzy",
+  }
 ];

@@ -6,8 +6,9 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { DataProvider, DataContext } from "./contexts/dataContext";
+import {FilterProvider,FilterContext} from './contexts/filterContext';
 
-export {DataContext};
+export {DataContext,FilterContext};
 // Call make Server
 makeServer();
 
@@ -15,7 +16,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <DataProvider>
+        <FilterProvider>
         <App />
+        </FilterProvider>
     </DataProvider>
     </Router>
     
