@@ -32,6 +32,18 @@ export function Products(){
                 onChange={(e)=> dispatchFilter({type:'SORT_BY_PRICE',payload:e.target.value})}
                 checked={filtersState.sortType==='htl'}/>Sort by price: high to Low
             </label>
+            <div className="price-range-filter">
+                <div className="price-range">
+                    <p>1000</p>
+                    <p>3000</p>
+                    <p>5000</p>
+                </div>
+                <label>
+                  <input type="range" min={1000} max={5000}  value={filtersState.priceRange} onChange={(e)=> dispatchFilter({type:'PRICE_RANGE', payload:e.target.value})}/>
+                </label>
+            </div>
+            
+            
 
             <ul>
                 {

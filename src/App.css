@@ -104,3 +104,12 @@ h3:hover{
   color: white;
 }
 
+
+.price-range-filter .price-range{
+  display: flex;
+  justify-content:center;
+  gap: 0.5rem;
+}
+
+
+
