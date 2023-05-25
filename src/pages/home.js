@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import { DataContext } from "../contexts/dataContext"
+import { DataContext } from ".."
 
 export function Home(){
     const {state} = useContext(DataContext);
