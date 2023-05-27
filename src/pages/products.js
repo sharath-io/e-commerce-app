@@ -56,7 +56,11 @@ export function Products(){
                             ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>
                             : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: product._id})}>Add to Cart</button>
                         }
-                        <button>Add to wishlist</button>
+                        {
+                            state.wishlist.includes(product)
+                            ? <NavLink to="/wishlist" className="nav-link"><button>Go to wishlist</button></NavLink>
+                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: product._id})}>Add to wishlist</button>
+                        }
                     </li>)
                 }
             </ul>
