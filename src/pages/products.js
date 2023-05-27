@@ -1,8 +1,9 @@
 import { useContext } from "react"
+import {NavLink} from 'react-router-dom';
 import {DataContext, FilterContext } from ".."
 
 export function Products(){
-    const {state} = useContext(DataContext);
+    const {state,dispatch} = useContext(DataContext);
 
     const {filtersState, dispatchFilter, sortFilteredData} = useContext(FilterContext);
     return (
@@ -43,16 +44,18 @@ export function Products(){
                 </label>
             </div>
             
-            
-
             <ul>
                 {
-                    sortFilteredData?.map(({categoryName,title,price,image}) => <li className="product-item">
-                        <h4>{title}</h4>
-                        <img src={image} alt={title}/>
-                        <p>{categoryName}</p>
-                        <p>{price}</p>
-                        <button className="btn-primary">Add to Cart</button>
+                    sortFilteredData?.map((product) => <li className="product-item" key={product._id}>
+                        <h4>{product.title}</h4>
+                        <img src={product.image} alt={product.title}/>
+                        <p>{product.categoryName}</p>
+                        <p>{product.price}</p>
+                        {
+                            state.cart.includes(product)
+                            ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>
+                            : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: product._id})}>Add to Cart</button>
+                        }
                         <button>Add to wishlist</button>
                     </li>)
                 }
