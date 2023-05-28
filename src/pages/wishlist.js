@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import {NavLink} from 'react-router-dom';
 import { DataContext } from ".."
 
 export function Wishlist(){
@@ -15,11 +14,7 @@ export function Wishlist(){
                         <img src={product.image} alt={product.title}/>
                         <p>{product.categoryName}</p>
                         <p>{product.price}</p>
-                        {
-                            state.cart.includes(product)
-                            ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>
-                            : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: product._id})}>Add to Cart</button>
-                        }
+                        <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: product._id})}>Add to Cart</button>
                         <button onClick={()=> dispatch({type:'REMOVE_FROM_WISHLIST', payload:product._id})}>Remove from wishlist</button>
                     </li>)
                 }
