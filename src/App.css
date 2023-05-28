@@ -111,5 +111,8 @@ h3:hover{
   gap: 0.5rem;
 }
 
-
+.cart-quantity{
+  display: flex;
+  justify-content: center;
+}
 
