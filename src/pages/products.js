@@ -46,22 +46,24 @@ export function Products(){
             
             <ul>
                 {
-                    sortFilteredData?.map((product) => <li className="product-item" key={product._id}>
-                        <h4>{product.title}</h4>
-                        <img src={product.image} alt={product.title}/>
-                        <p>{product.categoryName}</p>
-                        <p>{product.price}</p>
+                    sortFilteredData?.map((product) => {
+                        const {_id,title,image,categoryName,price} = product;
+                    return (<li className="product-item" key={_id}>
+                        <h4>{title}</h4>
+                        <img src={image} alt={title}/>
+                        <p>{categoryName}</p>
+                        <p>{price}</p>
                         {
                             state.cart.includes(product)
                             ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>
-                            : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: product._id})}>Add to Cart</button>
+                            : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: _id})}>Add to Cart</button>
                         }
                         {
                             state.wishlist.includes(product)
                             ? <NavLink to="/wishlist" className="nav-link"><button>Go to wishlist</button></NavLink>
-                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: product._id})}>Add to wishlist</button>
+                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: _id})}>Add to wishlist</button>
                         }
-                    </li>)
+                    </li>)})
                 }
             </ul>
         </div>

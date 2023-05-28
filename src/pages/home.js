@@ -8,12 +8,14 @@ export function Home(){
             <h1>Home page</h1>
             <ul>
                 {state.categories.length > 0 && 
-                    state.categories.map(({categoryName,description, image}) => <li>
+                    state.categories.map(( category) =>{
+                    const {_id,categoryName,description,image} = category
+                    return ( <li key={_id}>
                         <h3>{categoryName}</h3>
                         <img src={image} alt={categoryName}/>
                         <p>{description}</p>
                         <button className="btn-explore">Explore Now</button>
-                    </li>)
+                    </li>)})
                 }
             </ul>
 

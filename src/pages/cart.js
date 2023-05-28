@@ -11,23 +11,26 @@ export function Cart(){
             <ul>
                 {
                     state.cart.length===0 ? <p>Cart is empty</p>
-                    : displayCart?.map((product) =><li className="product-item" key={product._id}>
-                        <h4>{product.title}</h4>
-                        <img src={product.image} alt={product.title}/>
-                        <p>{product.categoryName}</p>
-                        <p>{product.price}</p>
+                    : displayCart?.map((product) =>{
+                        const {_id,title,image,categoryName,price} = product;
+                        
+                    return (<li className="product-item" key={_id}>
+                        <h4>{title}</h4>
+                        <img src={image} alt={title}/>
+                        <p>{categoryName}</p>
+                        <p>{price}</p>
                         <div className="cart-quantity">
-                          <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: product._id})}>+</button>
+                          <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: _id})}>+</button>
                           <p>{(state.cart.filter(item => item===product)).length}</p>
                           <button className="btn-primary">-</button>
                         </div>
-                            <button onClick={()=> dispatch({type:'REMOVE_FROM_CART', payload: product._id})}>Remove from Cart</button>
+                            <button onClick={()=> dispatch({type:'REMOVE_FROM_CART', payload: _id})}>Remove from Cart</button>
                         {
                             state.wishlist.includes(product)
                             ? <NavLink to="/wishlist" className="nav-link"><button>Go to wishlist</button></NavLink>
-                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: product._id})}>Add to wishlist</button>
+                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: _id})}>Add to wishlist</button>
                         }
-                    </li>)
+                    </li>)})
                 }
             </ul>
         </div>
