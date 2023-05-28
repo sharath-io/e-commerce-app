@@ -11,7 +11,6 @@ const reducerFunction =(state,action)=>{
         case 'REMOVE_FROM_CART': return {...state, cart:state.cart.filter(product => product._id!==action.payload)}
         case 'ADD_TO_Wishlist': return{...state, wishlist:[...state.wishlist, state.products.find(({_id})=> _id===action.payload) ]}
         case 'REMOVE_FROM_WISHLIST': return {...state, wishlist:state.wishlist.filter(product => product._id!==action.payload)}
-       
         default : return state;
     }
 }
