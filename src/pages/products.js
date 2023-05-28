@@ -53,6 +53,7 @@ export function Products(){
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
                         <p>{price}</p>
+                        <NavLink to={`/product/${_id}`}>View product Details</NavLink>
                         {
                             state.cart.includes(product)
                             ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>

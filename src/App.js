@@ -1,6 +1,6 @@
 import { Routes,Route } from 'react-router-dom';
 import './App.css';
-import {Home,Products,Wishlist,Cart} from './pages';
+import {Home,Products,Wishlist,Cart,ProductDetail} from './pages';
 import { Header } from './components/header';
 import Mockman from "mockman-js";
 
@@ -14,6 +14,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/mockman" element={<Mockman/>}/>
+          <Route path="/product/:productId" element={<ProductDetail/>}/>
         </Routes> 
     </div>
   );
