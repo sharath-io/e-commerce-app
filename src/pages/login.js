@@ -1,7 +1,7 @@
 export function Login(){
     return (
         <div>
-            <h1>This is login page</h1>
+            <h1>Need to login first</h1>
         </div>
     )
 }
