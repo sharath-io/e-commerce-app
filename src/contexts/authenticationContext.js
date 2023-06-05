@@ -1,5 +1,5 @@
 import { createContext,useReducer } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import { authReducer } from "../reducers/authReducer";
@@ -13,7 +13,7 @@ export function AuthProvider({children}){
         token:''
     }
 
-    const location = useLocation();
+    // const location = useLocation();
     const navigate = useNavigate();
 
 
