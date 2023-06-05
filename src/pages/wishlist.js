@@ -1,9 +1,14 @@
 import { useContext } from "react"
-import { NavLink } from "react-router-dom";
-import { DataContext } from ".."
+import { useNavigate } from "react-router-dom";
+import { AuthContext, DataContext } from ".."
+import {isItemInCart} from '../utils/cart-utils/isItemInCart';
+import {addToCartHandler} from '../utils/cart-utils/addToCarthandler';
+import { removeFromWishlistHandler } from "../utils/wishlist-utils/removeFromWishlistHandler";
 
 export function Wishlist(){
-    const {state, dispatch} = useContext(DataContext);
+    const navigate = useNavigate();
+    const {state, productDispatch} = useContext(DataContext);
+    const {authState} = useContext(AuthContext);
     return (
         <div>
             <h1>Wishlist page</h1>
@@ -17,12 +22,21 @@ export function Wishlist(){
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
                         <p>{price}</p>
-                        {
-                            state.cart.includes(product)
-                            ? <NavLink to="/cart" className="nav-link"><button>Go to cart</button></NavLink>
-                            : <button onClick={()=> dispatch({type:'ADD_TO_CART', payload: _id})}>Add to cart</button>
-                        }
-                        <button onClick={()=> dispatch({type:'REMOVE_FROM_WISHLIST', payload:_id})}>Remove from wishlist</button>
+                        <button onClick={()=>{
+                            if(authState.isLoggedIn){
+                                if(isItemInCart(state.cart, _id)){
+                                    navigate('/cart');
+                                } else{
+                                    addToCartHandler(product, productDispatch)
+                                }
+                            }
+                            else{
+                                navigate('/login');
+                            }
+                        }}>
+                            {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
+                        </button>
+                        <button onClick={()=> removeFromWishlistHandler(productDispatch, _id)}>Remove from Wishlist</button>
                     </li>)})
                 }
             </ul>
