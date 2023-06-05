@@ -1,15 +1,9 @@
 import { useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom"
-import {AuthContext, DataContext} from '..';
-import {isItemInCart} from '../utils/cart-utils/isItemInCart';
-import {addToCartHandler} from '../utils/cart-utils/addToCarthandler';
-import {addToWishlistHandler} from '../utils/wishlist-utils/addToWishlisthandler';
-import {isItemInWishlist} from '../utils/wishlist-utils/isItemInWIshlist';
+import { NavLink, useParams } from "react-router-dom"
+import {DataContext} from '..';
 
 export function ProductDetail(){
-    const navigate = useNavigate();
-    const {state, productDispatch} = useContext(DataContext);
-    const {authState} = useContext(AuthContext)
+    const {state, dispatch} = useContext(DataContext);
     const {productId} = useParams();
     const selectedProduct = state.products.find(product=> product._id===productId);
     const {_id,title,image,categoryName,price} = selectedProduct;
@@ -22,34 +16,16 @@ export function ProductDetail(){
                         <p>{categoryName}</p>
                         <p>{price}</p>
                         
-                        <button onClick={()=>{
-                            if(authState.isLoggedIn){
-                                if(isItemInCart(state.cart, _id)){
-                                    navigate('/cart');
-                                } else{
-                                    addToCartHandler(selectedProduct, productDispatch)
-                                }
-                            }
-                            else{
-                                navigate('/login');
-                            }
-                        }}>
-                            {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
-                        </button>
-                        <button onClick={()=>{
-                            if(authState.isLoggedIn){
-                                if(isItemInWishlist(state.wishlist, _id)){
-                                    navigate('/wishlist');
-                                } else{
-                                    addToWishlistHandler(selectedProduct, productDispatch)
-                                }
-                            }
-                            else{
-                                navigate('/login');
-                            }
-                        }}>
-                            {isItemInWishlist(state?.wishlist, _id) ? "Go to Wishlist" : "Add to Wishlist"}
-                        </button>
+                        {
+                            state.cart.includes(selectedProduct)
+                            ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>
+                            : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: _id})}>Add to Cart</button>
+                        }
+                        {
+                            state.wishlist.includes(selectedProduct)
+                            ? <NavLink to="/wishlist" className="nav-link"><button>Go to wishlist</button></NavLink>
+                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: _id})}>Add to wishlist</button>
+                        }
             </div>
         </div>
     )
