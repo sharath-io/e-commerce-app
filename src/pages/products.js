@@ -1,9 +1,15 @@
 import { useContext } from "react"
-import {NavLink} from 'react-router-dom';
-import {DataContext, FilterContext } from ".."
+import {NavLink, useNavigate} from 'react-router-dom';
+import {AuthContext, DataContext, FilterContext } from ".."
+import {isItemInCart} from '../utils/cart-utils/isItemInCart';
+import {addToCartHandler} from '../utils/cart-utils/addToCarthandler';
+import {isItemInWishlist} from '../utils/wishlist-utils/isItemInWishlist';
+import {addToWishlistHandler} from '../utils/wishlist-utils/addToWishlisthandler';
 
 export function Products(){
-    const {state,dispatch} = useContext(DataContext);
+    const navigate = useNavigate();
+    const {state,productDispatch} = useContext(DataContext);
+    const {authState} = useContext(AuthContext)
 
     const {filtersState, dispatchFilter, sortFilteredData} = useContext(FilterContext);
     return (
@@ -54,16 +60,38 @@ export function Products(){
                         <p>{categoryName}</p>
                         <p>{price}</p>
                         <p><NavLink to={`/product/${_id}`}>View product Details</NavLink></p>
-                        {
-                            state.cart.includes(product)
-                            ? <NavLink to="/cart" className="nav-link"><button>Go to Cart</button></NavLink>
-                            : <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: _id})}>Add to Cart</button>
-                        }
-                        {
-                            state.wishlist.includes(product)
-                            ? <NavLink to="/wishlist" className="nav-link"><button>Go to wishlist</button></NavLink>
-                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: _id})}>Add to wishlist</button>
-                        }
+                        <button onClick={()=>{
+                            if(authState.isLoggedIn){
+                                if(isItemInCart(state.cart, _id)){
+                                    navigate('/cart');
+                                } else{
+                                    addToCartHandler(product, productDispatch)
+                                }
+                            }
+                            else{
+                                navigate('/login');
+                            }
+                        }}>
+                            {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
+                        </button>
+                        <button onClick={()=>{
+                            if(authState.isLoggedIn){
+                                if(isItemInWishlist(state.wishlist, _id)){
+                                    navigate('/wishlist');
+                                } else{
+                                    addToWishlistHandler(product, productDispatch)
+                                }
+                            }
+                            else{
+                                navigate('/login');
+                            }
+                        }}>
+                            {isItemInWishlist(state?.wishlist, _id) ? "Go to Wishlist" : "Add to Wishlist"}
+                        </button>
+
+
+
+
                     </li>)})
                 }
             </ul>

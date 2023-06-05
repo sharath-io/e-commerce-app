@@ -1,17 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react"
-import { DataContext } from ".."
+import { AuthContext, DataContext } from ".."
+import {isItemInWishlist} from '../utils/wishlist-utils/isItemInWishlist';
+import {addToWishlistHandler} from '../utils/wishlist-utils/addToWishlisthandler';
+import { removeFromCartHandler } from "../utils/cart-utils/removeFromCartHandler";
+import {handleCartQuantityChange} from '../utils/cart-utils/handleCartQuantityChange';
 
 export function Cart(){
-    const {state, dispatch} = useContext(DataContext);
-    const displayCart = state.cart.filter((value,index,self) =>self.indexOf(value)===index)
+    const navigate = useNavigate();
+    const {state, productDispatch} = useContext(DataContext);
+    const {authState} = useContext(AuthContext);
     return (
         <div>
             <h1>Cart page</h1>
             <ul>
                 {
                     state.cart.length===0 ? <p>Cart is empty</p>
-                    : displayCart?.map((product) =>{
+                    : state.cart?.map((product) =>{
                         const {_id,title,image,categoryName,price} = product;
                         
                     return (<li className="product-item" key={_id}>
@@ -20,16 +25,31 @@ export function Cart(){
                         <p>{categoryName}</p>
                         <p>{price}</p>
                         <div className="cart-quantity">
-                          <button className="btn-primary" onClick={()=> dispatch({type:'ADD_TO_CART', payload: _id})}>+</button>
-                          <p>{(state.cart.filter(item => item===product)).length}</p>
-                          <button className="btn-primary">-</button>
+                        <button
+                           disabled={product.qty > 1 ? false : true}
+                           onClick={() => {handleCartQuantityChange(productDispatch, _id, "decrement")}}
+                         >-</button>
+                        <p>{product.qty}</p>
+                        <button
+                           onClick={() => {handleCartQuantityChange(productDispatch, _id, "increment")}}
+                         >+</button>
+
                         </div>
-                            <button onClick={()=> dispatch({type:'REMOVE_FROM_CART', payload: _id})}>Remove from Cart</button>
-                        {
-                            state.wishlist.includes(product)
-                            ? <NavLink to="/wishlist" className="nav-link"><button>Go to wishlist</button></NavLink>
-                            : <button onClick={()=> dispatch({type:'ADD_TO_Wishlist', payload: _id})}>Add to wishlist</button>
-                        }
+                        <button onClick={()=> removeFromCartHandler(productDispatch, _id)}>Remove from Cart</button>
+                        <button onClick={()=>{
+                            if(authState.isLoggedIn){
+                                if(isItemInWishlist(state.wishlist, _id)){
+                                    navigate('/wishlist');
+                                } else{
+                                    addToWishlistHandler(product, productDispatch)
+                                }
+                            }
+                            else{
+                                navigate('/login');
+                            }
+                        }}>
+                            {isItemInWishlist(state?.wishlist, _id) ? "Go to Wishlist" : "Add to Wishlist"}
+                        </button>
                     </li>)})
                 }
             </ul>
