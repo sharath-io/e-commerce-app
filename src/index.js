@@ -7,19 +7,23 @@ import App from "./App";
 import { makeServer } from "./server";
 import { DataProvider, DataContext } from "./contexts/dataContext";
 import {FilterProvider,FilterContext} from './contexts/filterContext';
+import { AuthProvider,AuthContext } from "./contexts/authenticationContext";
 
-export {DataContext,FilterContext};
+
+export {DataContext,FilterContext,AuthContext};
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <DataProvider>
-        <FilterProvider>
-        <App />
-        </FilterProvider>
-    </DataProvider>
+      <AuthProvider>
+        <DataProvider>
+          <FilterProvider>
+            <App />
+          </FilterProvider>
+        </DataProvider>
+      </AuthProvider>
     </Router>
     
   </React.StrictMode>,
