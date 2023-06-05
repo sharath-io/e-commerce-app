@@ -68,7 +68,6 @@ li{
 .product-item{
   border: 1px solid transparent;
   box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
-  border-radius: 15px;
 }
 
 .product-item:hover{
@@ -117,28 +116,3 @@ h3:hover{
   justify-content: center;
 }
 
-
-.login-container{
-  border: 1px solid green;
-  border-radius: 1rem;
-  width: 25rem;
-  margin: 0 auto;
-  padding: 3rem;
-}
-
-.login-container div{
-  padding: 0.5rem;
-}
-
-.login-container div label{
-  display: block;
-}
-
-.nav-bar{
-  margin-bottom: 6rem;
-}
-
-.new-account{
-  text-decoration-line: underline;
-  cursor: pointer;
-}
