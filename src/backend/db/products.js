@@ -14,6 +14,7 @@ export const products = [{
   sellingPrice: "3500",
   image: Quest1,
   categoryName: "virtual-reality",
+  rating:"3"
 },
 {
   _id: uuid(),
@@ -22,6 +23,7 @@ export const products = [{
   sellingPrice: "8500",
   image: Quest2,
   categoryName: "virtual-reality",
+  rating:"3.5"
 },
 
   {
@@ -31,6 +33,7 @@ export const products = [{
     sellingPrice: "1000",
     image: MetaQuestProEarphones,
     categoryName: "soundzy",
+    rating:"4"
   },
   {
     _id: uuid(),
@@ -39,6 +42,7 @@ export const products = [{
     sellingPrice: "3000",
     image: LogitechHeadphones,
     categoryName: "soundzy",
+    rating:"4"
   },
   {
     _id: uuid(),
@@ -47,6 +51,7 @@ export const products = [{
     sellingPrice: "3000",
     image: LinkCable,
     categoryName: "soundzy",
+    rating:"2"
   },
   {
     _id: uuid(),
@@ -55,6 +60,7 @@ export const products = [{
     sellingPrice: "2500",
     image: MetaQuestAdapter  ,
     categoryName: "virtual-reality",
+    rating:"4"
   },
   {
     _id: uuid(),
@@ -63,6 +69,7 @@ export const products = [{
     sellingPrice: "8500",
     image: QuestWithControllers,
     categoryName: "virtual-reality",
+    rating:"4.5"
   },
   
   {
@@ -72,6 +79,7 @@ export const products = [{
     sellingPrice: "8500",
     image: CarryCase,
     categoryName: "virtual-reality",
+    rating:"1.5"
   },
   {
     _id: uuid(),
@@ -80,6 +88,7 @@ export const products = [{
     sellingPrice: "8500",
     image: QuestLeftController,
     categoryName: "virtual-reality",
+    rating: "3.5"
   },
   
   
@@ -90,6 +99,7 @@ export const products = [{
     sellingPrice: "4500",
     image: HeadStrap,
     categoryName: "virtual-reality",
+    rating: "3"
   },
   
   {
@@ -99,6 +109,7 @@ export const products = [{
     sellingPrice: "4500",
     image: RingCovers,
     categoryName: "virtual-reality",
+    rating:"4"
   },
   
   {
@@ -108,6 +119,7 @@ export const products = [{
     sellingPrice: "2500",
     image: LightBlocker ,
     categoryName: "virtual-reality",
+    rating:"4.5"
   },
   
   {
@@ -117,6 +129,7 @@ export const products = [{
     sellingPrice: "2500",
     image: MetaQuestGiftCards ,
     categoryName: "virtual-reality",
+    rating: "2"
   },
     {
       _id: uuid(),
@@ -125,6 +138,7 @@ export const products = [{
       sellingPrice: "2500",
       image: RaybanRound,
       categoryName: "smart-glasses",
+      rating: "4"
     },
     {
       _id: uuid(),
@@ -133,7 +147,9 @@ export const products = [{
       sellingPrice: "6500",
       image: RaybanMeteor,
       categoryName: "smart-glasses",
+      rating: "3"
     },
+
     {
       _id: uuid(),
       title: "Ray-Ban Wayfarer",
@@ -141,6 +157,7 @@ export const products = [{
       sellingPrice: "6500",
       image: RaybanWayfarer,
       categoryName: "smart-glasses",
+      rating: "3.5"
     },
     
     {
@@ -150,6 +167,7 @@ export const products = [{
       sellingPrice: "1000",
       image: SoundcoreEarbuds,
       categoryName: "soundzy",
+      rating: "3.5"
     },
     {
       _id: uuid(),
@@ -158,5 +176,6 @@ export const products = [{
       sellingPrice: "8500",
       image: QuestRightController,
       categoryName: "virtual-reality",
+      rating: "3.5"
     }
 ];

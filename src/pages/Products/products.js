@@ -60,15 +60,46 @@ export function Products(){
                 </div>
             
             <div className="price-range-filter filter-item">
-            <h4>Rating Filter</h4>
+            <h4>Price slider</h4>
                 <div className="price-range">
-                    <p>1000</p>
                     <p>3000</p>
-                    <p>5000</p>
+                    <p>6000</p>
+                    <p>9000</p>
                 </div>
                 <label>
-                  <input type="range" min={1000} max={5000}  value={filtersState.priceRange} onChange={(e)=> dispatchFilter({type:'PRICE_RANGE', payload:e.target.value})}/>
+                  <input type="range" min={500} max={10000}  value={filtersState.priceRange} onChange={(e)=> dispatchFilter({type:'PRICE_RANGE', payload:e.target.value})}/>
                 </label>
+            </div>
+            <div className="filter-item">
+               <h4>Rating filter</h4>
+                <div>
+                  <label>
+                     <input type="radio" name="rating" value="4"
+                        onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
+                        checked={filtersState.ratingNumber=== "4"}/>4 * and more
+                      </label>
+                </div>
+                <div>
+                  <label>
+                     <input type="radio" name="rating" value="3.5"
+                        onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
+                        checked={filtersState.ratingNumber=== "3.5"}/>3.5 * and more
+                      </label>
+                </div>
+                <div>
+                  <label>
+                     <input type="radio" name="rating" value="3"
+                        onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
+                        checked={filtersState.ratingNumber=== "3"}/>3 * and more
+                      </label>
+                </div>
+                <div>
+                  <label>
+                     <input type="radio" name="rating" value="2"
+                        onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
+                        checked={filtersState.ratingNumber=== "2"}/>2 * and more
+                      </label>
+                </div>
             </div>
 
             </div>
@@ -77,7 +108,7 @@ export function Products(){
             <ul className="card-container">
                 {
                     sortFilteredData?.map((product) => {
-                        const {_id,title,image,categoryName,originalPrice,sellingPrice} = product;
+                        const {_id,title,image,categoryName,originalPrice,sellingPrice,rating} = product;
                     return (<li className="product-item card-item" key={_id}>
                         <h4>{title}</h4>
                         <img src={image} alt={title} className="product-img"/>
@@ -85,6 +116,7 @@ export function Products(){
                         
                         <p><span style={{textDecoration:'line-through'}}>{originalPrice}</span> $ {sellingPrice} USD</p>
                         <NavLink to={`/product/${_id}`}><p className="learn-more">view Details</p></NavLink>
+                        <p>rating : {rating}</p>
                         
                         <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
