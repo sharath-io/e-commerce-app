@@ -53,12 +53,13 @@ export function Products(){
             <ul>
                 {
                     sortFilteredData?.map((product) => {
-                        const {_id,title,image,categoryName,price} = product;
+                        const {_id,title,image,categoryName,originalPrice,sellingPrice} = product;
                     return (<li className="product-item" key={_id}>
                         <h4>{title}</h4>
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
-                        <p>{price}</p>
+                        <p style={{textDecoration:'line-through'}}>{originalPrice}</p>
+                        <p>{sellingPrice}</p>
                         <p><NavLink to={`/product/${_id}`}>View product Details</NavLink></p>
                         <button onClick={()=>{
                             if(authState.isLoggedIn){

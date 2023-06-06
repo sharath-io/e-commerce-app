@@ -12,7 +12,7 @@ export function ProductDetail(){
     const {authState} = useContext(AuthContext)
     const {productId} = useParams();
     const selectedProduct = state.products.find(product=> product._id===productId);
-    const {_id,title,image,categoryName,price} = selectedProduct;
+    const {_id,title,image,categoryName,sellingPrice} = selectedProduct;
     return (
         <div>
             <h1>This is product Details page</h1>
@@ -20,7 +20,7 @@ export function ProductDetail(){
                         <h4>{title}</h4>
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
-                        <p>{price}</p>
+                        <p>{sellingPrice}</p>
                         
                         <button onClick={()=>{
                             if(authState.isLoggedIn){

@@ -17,13 +17,13 @@ export function Cart(){
                 {
                     state.cart.length===0 ? <p>Cart is empty</p>
                     : state.cart?.map((product) =>{
-                        const {_id,title,image,categoryName,price} = product;
+                        const {_id,title,image,categoryName,sellingPrice} = product;
                         
                     return (<li className="product-item" key={_id}>
                         <h4>{title}</h4>
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
-                        <p>{price}</p>
+                        <p>{sellingPrice}</p>
                         <div className="cart-quantity">
                         <button
                            disabled={product.qty > 1 ? false : true}

@@ -21,7 +21,7 @@ export function FilterProvider({children}){
    ? state.products?.filter(({title}) => title.toLowerCase().includes(filtersState?.search.toLowerCase()))
    : state.products;
 
-   const priceRangeFilteredData= searchFilteredData.filter(({price})=> Number(price) <=Number(filtersState.priceRange))
+   const priceRangeFilteredData= searchFilteredData.filter(({sellingPrice})=> Number(sellingPrice) <=Number(filtersState.priceRange))
 
 
    const categoryFilteredData = filtersState?.categoryFilter?.length>0
@@ -30,7 +30,7 @@ export function FilterProvider({children}){
 
 
     const sortFilteredData = filtersState?.sortType?.length>0 
-    ?[...categoryFilteredData].sort((item1,item2) => filtersState.sortType==='lth' ? item1.price - item2.price : item2.price - item1.price)
+    ?[...categoryFilteredData].sort((item1,item2) => filtersState.sortType==='lth' ? item1.sellingPrice - item2.sellingPrice : item2.sellingPrice - item1.sellingPrice)
     : categoryFilteredData
 
 
