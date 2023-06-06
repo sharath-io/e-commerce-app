@@ -2,13 +2,13 @@ import { Routes,Route } from 'react-router-dom';
 import './App.css';
 import {Home,Products,Wishlist,Cart,ProductDetail,Login,SignUp,AccountDetails,AddressDetails,OrderHistory,UserDetails} from './pages';
 import {RequiredAuth} from './components/requiredAuth';
-import { Header } from './components/header';
+import { Navbar } from './components/Navbar/navbar';
 import Mockman from "mockman-js";
 
 function App() {
     return (
       <div className="App">
-        <Header/>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/products" element={<Products/>}/>
@@ -20,9 +20,9 @@ function App() {
           <Route path="/signup" element={<SignUp/>}/>
 
           <Route path="/account-details" element={<RequiredAuth><AccountDetails/></RequiredAuth>}>
+            <Route path="userDetails" element={<UserDetails/>}/>
             <Route path="addressDetails" element={<AddressDetails/>}/>
             <Route path="orderDetails" element={<OrderHistory/>}/>
-            <Route path="userDetails" element={<UserDetails/>}/>
           </Route>
         </Routes> 
       </div>

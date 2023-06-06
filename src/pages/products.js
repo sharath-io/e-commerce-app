@@ -15,7 +15,7 @@ export function Products(){
     return (
         <div>
             <h1>Products page</h1>
-            <button onClick={()=> dispatchFilter({type:'CLEAR_ALL_FILTERS'})}>Clear Filters</button>
+            <button  className="card-button" onClick={()=> dispatchFilter({type:'CLEAR_ALL_FILTERS'})}>Clear Filters</button>
             <label>
                 <input type="text" placeholder="search product" 
                 onChange={(e)=> dispatchFilter({type:'SEARCH_TEXT', payload: e.target.value})}/>
@@ -50,18 +50,18 @@ export function Products(){
                 </label>
             </div>
             
-            <ul>
+            <ul className="card-container">
                 {
                     sortFilteredData?.map((product) => {
                         const {_id,title,image,categoryName,originalPrice,sellingPrice} = product;
-                    return (<li className="product-item" key={_id}>
+                    return (<li className="product-item card-item" key={_id}>
                         <h4>{title}</h4>
-                        <img src={image} alt={title}/>
+                        <img src={image} alt={title} className="product-img"/>
                         <p>{categoryName}</p>
                         <p style={{textDecoration:'line-through'}}>{originalPrice}</p>
                         <p>{sellingPrice}</p>
                         <p><NavLink to={`/product/${_id}`}>View product Details</NavLink></p>
-                        <button onClick={()=>{
+                        <button className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInCart(state.cart, _id)){
                                     navigate('/cart');
@@ -75,7 +75,7 @@ export function Products(){
                         }}>
                             {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
                         </button>
-                        <button onClick={()=>{
+                        <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
                                     navigate('/wishlist');

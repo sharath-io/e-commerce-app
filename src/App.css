@@ -1,8 +1,14 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -48,21 +54,28 @@
   color: #d9d9d9;
   font-size: 1.2rem;
   margin: 1rem;
-}
-
-.nav-link{
-  margin: 10px;
-}
-
-ul{
+} */
+/* 
+/* ------------------------------ */
+ /* ul{
   list-style-type: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+} */
+
+.card-container{
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3rem;
 }
 
-li{
+/* li{
   margin: 10px;
-  
+} */
+
+.card-item{
+  margin: 10px;
 }
 
 .product-item{
@@ -75,13 +88,13 @@ li{
   box-shadow: 0 0 11px rgba(37, 153, 157, 0.2); 
 }
 
-img{
+.product-img{
   max-width: 150px;
   width: 100%;
   height: 200px;
 }
 
-button{
+.card-button{
   padding: 10px;
   background-color: white;
   font-weight: bolder;
@@ -90,15 +103,15 @@ button{
   border-radius: 24px;
 }
 
-.btn-explore:hover{
+.card-button:hover{
   background-color: black;
   color: white;
 }
-
+/* 
 h3:hover{
   color: blue;
   cursor: pointer;
-}
+} */
 
 .btn-primary{
   background-color: black;
@@ -134,9 +147,7 @@ h3:hover{
   display: block;
 }
 
-.nav-bar{
-  margin-bottom: 6rem;
-}
+
 
 .new-account{
   text-decoration-line: underline;

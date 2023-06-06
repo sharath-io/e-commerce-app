@@ -7,6 +7,7 @@ import RaybanRound from './images/raybanRound.jpg';
 import RaybanMeteor from './images/raybanMeteor.jpg';
 import LogitechHeadphones from './images/logitechHeadphones.jpg';
 import SoundcoreEarbuds from './images/soundcoreEarbuds.jpg';
+import Banner from './images/banner.jpg';
 
 
-export {Quest, Headphones,Glasses,Quest1,QuestPro,RaybanRound, RaybanMeteor,LogitechHeadphones,SoundcoreEarbuds};
+export {Quest, Headphones,Glasses,Quest1,QuestPro,RaybanRound, RaybanMeteor,LogitechHeadphones,SoundcoreEarbuds,Banner};

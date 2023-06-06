@@ -21,22 +21,22 @@ export function Cart(){
                         
                     return (<li className="product-item" key={_id}>
                         <h4>{title}</h4>
-                        <img src={image} alt={title}/>
+                        <img src={image} alt={title} className="product-img"/>
                         <p>{categoryName}</p>
                         <p>{sellingPrice}</p>
                         <div className="cart-quantity">
-                        <button
+                        <button   className="card-button"
                            disabled={product.qty > 1 ? false : true}
                            onClick={() => {handleCartQuantityChange(productDispatch, _id, "decrement")}}
                          >-</button>
                         <p>{product.qty}</p>
-                        <button
+                        <button  className="card-button"
                            onClick={() => {handleCartQuantityChange(productDispatch, _id, "increment")}}
                          >+</button>
 
                         </div>
-                        <button onClick={()=> removeFromCartHandler(productDispatch, _id)}>Remove from Cart</button>
-                        <button onClick={()=>{
+                        <button  className="card-button" onClick={()=> removeFromCartHandler(productDispatch, _id)}>Remove from Cart</button>
+                        <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
                                     navigate('/wishlist');
