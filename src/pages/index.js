@@ -1,6 +1,6 @@
 import {Home} from './Home/home';
 import {Products} from './Products/products';
-import {Wishlist} from './wishlist';
+import {Wishlist} from './Wishlist/wishlist';
 import {Cart} from './cart';
 import { ProductDetail } from './productDetail';
 import {Login} from './login';
