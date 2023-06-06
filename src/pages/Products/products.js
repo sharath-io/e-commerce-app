@@ -82,9 +82,9 @@ export function Products(){
                         <h4>{title}</h4>
                         <img src={image} alt={title} className="product-img"/>
                         <p>{categoryName}</p>
-                        <p style={{textDecoration:'line-through'}}>{originalPrice}</p>
-                        <p>{sellingPrice}</p>
-                        <p><NavLink to={`/product/${_id}`}>View product Details</NavLink></p>
+                        
+                        <p><span style={{textDecoration:'line-through'}}>{originalPrice}</span> $ {sellingPrice} USD</p>
+                        <NavLink to={`/product/${_id}`}><p className="learn-more">view Details</p></NavLink>
                         
                         <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){

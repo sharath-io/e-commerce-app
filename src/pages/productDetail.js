@@ -21,7 +21,6 @@ export function ProductDetail(){
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
                         <p>{sellingPrice}</p>
-                        
                         <button onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInCart(state.cart, _id)){
