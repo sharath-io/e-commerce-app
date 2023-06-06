@@ -1,4 +1,4 @@
-import {Home} from './Home/Home';
+import {Home} from './Home/home';
 import {Products} from './products';
 import {Wishlist} from './wishlist';
 import {Cart} from './cart';

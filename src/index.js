@@ -8,15 +8,17 @@ import { makeServer } from "./server";
 import { DataProvider, DataContext } from "./contexts/dataContext";
 import {FilterProvider,FilterContext} from './contexts/filterContext';
 import { AuthProvider,AuthContext } from "./contexts/authenticationContext";
+import { OrderProvider,OrderContext } from "./contexts/orderContext";
 
 
-export {DataContext,FilterContext,AuthContext};
+export {DataContext,FilterContext,AuthContext,OrderContext};
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <OrderProvider>
       <AuthProvider>
         <DataProvider>
           <FilterProvider>
@@ -24,6 +26,7 @@ ReactDOM.render(
           </FilterProvider>
         </DataProvider>
       </AuthProvider>
+      </OrderProvider>
     </Router>
     
   </React.StrictMode>,
