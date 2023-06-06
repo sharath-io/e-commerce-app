@@ -69,6 +69,7 @@
   justify-content: space-evenly;
   margin: 3rem;
   flex-wrap: wrap;
+  width: 80%;
 }
 
 /* li{
@@ -107,10 +108,10 @@
   border-radius: 24px;
 }
 
-.card-button:hover{
+/* .card-button:hover{
   background-color: black;
   color: white;
-}
+} */
 /* 
 h3:hover{
   color: blue;
@@ -118,7 +119,7 @@ h3:hover{
 } */
 
 .btn-primary{
-  background-color: black;
+  background-color: #384c54;
   color: white;
 }
 
@@ -150,8 +151,6 @@ h3:hover{
 .login-container div label{
   display: block;
 }
-
-
 
 .new-account{
   text-decoration-line: underline;
