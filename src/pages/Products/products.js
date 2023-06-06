@@ -76,28 +76,28 @@ export function Products(){
                   <label>
                      <input type="radio" name="rating" value="4"
                         onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
-                        checked={filtersState.ratingNumber=== "4"}/>4 <span class="fa fa-star star-icon fill"></span> and more
+                        checked={filtersState.ratingNumber=== "4"}/>4 and more
                       </label>
                 </div>
                 <div>
                   <label>
                      <input type="radio" name="rating" value="3"
                         onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
-                        checked={filtersState.ratingNumber=== "3"}/>3 <span class="fa fa-star star-icon fill"></span> and more
+                        checked={filtersState.ratingNumber=== "3"}/>3  and more
                       </label>
                 </div>
                 <div>
                   <label>
                      <input type="radio" name="rating" value="2"
                         onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
-                        checked={filtersState.ratingNumber=== "2"}/>2 <span class="fa fa-star star-icon fill"></span> and more
+                        checked={filtersState.ratingNumber=== "2"}/>2  and more
                       </label>
                 </div>
                 <div>
                   <label>
                      <input type="radio" name="rating" value="1"
                         onChange={(e)=> dispatchFilter({type:'SORT_BY_RATING',payload: e.target.value})}
-                        checked={filtersState.ratingNumber=== "1"}/>1 <span class="fa fa-star star-icon fill"></span> and more
+                        checked={filtersState.ratingNumber=== "1"}/>1 and more
                       </label>
                 </div>
             </div>
@@ -116,7 +116,7 @@ export function Products(){
                         
                         <p><span style={{textDecoration:'line-through'}}>{originalPrice}</span> $ {sellingPrice} USD</p>
                         <NavLink to={`/product/${_id}`}><p className="learn-more">view Details</p></NavLink>
-                        <p>rating : {rating} <span class="fa fa-star star-icon fill"></span></p>
+                        <p>rating : {rating} </p>
                         
                         <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
