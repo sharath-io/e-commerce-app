@@ -1,7 +1,7 @@
 import {Home} from './Home/home';
 import {Products} from './Products/products';
 import {Wishlist} from './Wishlist/wishlist';
-import {Cart} from './cart';
+import {Cart} from './cart/cart';
 import { ProductDetail } from './productDetail';
 import {Login} from './login';
 import { SignUp } from './signUp';

@@ -22,7 +22,7 @@ export function Home(){
                     </div>
                  </div>
             </div>
-            <ul className="card-container">
+            <ul className="homecatgeory-container">
                 {state.categories.length > 0 && 
                     state.categories.map(( category) =>{
                     const {_id,categoryName,description,image} = category
@@ -30,13 +30,12 @@ export function Home(){
                         <h3>{categoryName}</h3>
                         <img src={image} alt={categoryName} className="product-img"/>
                         <p>{description}</p>
-                        <NavLink to="/products">
-                           <button className="card-button" onClick={()=> {
+                        <button className="card-button" onClick={()=> {
                             dispatchFilter({type:'CLEAR_ALL_FILTERS'})
                             dispatchFilter({type:'FILTER_CATEGORY', payload: categoryName})
                            }}>
-                            Explore Now</button>
-                        </NavLink>
+                            <NavLink to="/products">Explore Now</NavLink>
+                        </button>
                     </li>)})
                 }
             </ul>

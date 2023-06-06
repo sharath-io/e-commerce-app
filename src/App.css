@@ -108,10 +108,9 @@
   border-radius: 24px;
 }
 
-/* .card-button:hover{
-  background-color: black;
-  color: white;
-} */
+.card-button:hover{
+  text-decoration: underline;
+}
 /* 
 h3:hover{
   color: blue;
@@ -130,10 +129,7 @@ h3:hover{
   gap: 0.5rem;
 } */
 
-.cart-quantity{
-  display: flex;
-  justify-content: center;
-}
+
 
 
 .login-container{
