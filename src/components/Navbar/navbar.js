@@ -2,16 +2,21 @@ import { useContext } from "react"
 import { NavLink } from "react-router-dom"
 
 import './navbar.css';
-import {DataContext,AuthContext} from '../..';
+import {DataContext,AuthContext, FilterContext} from '../..';
 
 export function Navbar(){
     const {state} = useContext(DataContext);
     const {authState} = useContext(AuthContext);
+    const {dispatchFilter} = useContext(FilterContext);
     return (
         <div>
             <p className="header">FREE SHIPPING AND RETURNS ON ALL META DEVICES!</p>
             <div className="nav-container">
               <NavLink to="/"  className="nav-link">Meta-Store</NavLink>
+              <label>
+                <input type="text" placeholder="search product" 
+                onChange={(e)=> dispatchFilter({type:'SEARCH_TEXT', payload: e.target.value})}/>
+              </label>
               <nav className="nav-bar">
                <NavLink to="/products" className="nav-link">Products </NavLink>
                <NavLink to="/wishlist" className="nav-link">Wishlist ({state.wishlist.length})</NavLink>

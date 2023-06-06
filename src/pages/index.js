@@ -1,5 +1,5 @@
 import {Home} from './Home/home';
-import {Products} from './products';
+import {Products} from './Products/products';
 import {Wishlist} from './wishlist';
 import {Cart} from './cart';
 import { ProductDetail } from './productDetail';

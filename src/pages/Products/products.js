@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import {NavLink, useNavigate} from 'react-router-dom';
-import {AuthContext, DataContext, FilterContext } from ".."
-import {isItemInCart} from '../utils/cart-utils/isItemInCart';
-import {addToCartHandler} from '../utils/cart-utils/addToCarthandler';
-import {isItemInWishlist} from '../utils/wishlist-utils/isItemInWishlist';
-import {addToWishlistHandler} from '../utils/wishlist-utils/addToWishlisthandler';
+import {AuthContext, DataContext, FilterContext } from "../.."
+import {isItemInCart} from '../../utils/cart-utils/isItemInCart';
+import {addToCartHandler} from '../../utils/cart-utils/addToCarthandler';
+import {isItemInWishlist} from '../../utils/wishlist-utils/isItemInWishlist';
+import {addToWishlistHandler} from '../../utils/wishlist-utils/addToWishlisthandler';
+import './products.css';
 
 export function Products(){
     const navigate = useNavigate();
@@ -14,12 +15,8 @@ export function Products(){
     const {filtersState, dispatchFilter, sortFilteredData} = useContext(FilterContext);
     return (
         <div>
-            <h1>Products page</h1>
+            <h1>Meta Products - {sortFilteredData.length}</h1>
             <button  className="card-button" onClick={()=> dispatchFilter({type:'CLEAR_ALL_FILTERS'})}>Clear Filters</button>
-            <label>
-                <input type="text" placeholder="search product" 
-                onChange={(e)=> dispatchFilter({type:'SEARCH_TEXT', payload: e.target.value})}/>
-            </label>
             {
                 state.categories.map(({categoryName}) =>
                     <label>

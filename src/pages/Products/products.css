@@ -1,0 +1,6 @@
+.price-range-filter .price-range{
+    display: flex;
+    justify-content:center;
+    gap: 0.5rem;
+  }
+  
