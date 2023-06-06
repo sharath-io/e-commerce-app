@@ -10,7 +10,7 @@ export function AccountDetails(){
             <NavLink to="/account-details/userDetails">User Details ||</NavLink>
             <NavLink to="/account-details/addressDetails">Address Details ||</NavLink>
             <NavLink to="/account-details/orderDetails">Order History ||</NavLink>
-            <div><Outlet/></div>
+            <div> <Outlet/></div>
             <button onClick={userLogout}>Logout</button>
         </div>
     )

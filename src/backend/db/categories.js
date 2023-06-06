@@ -10,24 +10,18 @@ export const categories = [
     _id: uuid(),
     categoryName: "virtual-reality",
     image: Quest,
-    description:
-    'description 1',
-      // "Get your physical devices for virtual world",
+    description: "Get your physical devices for virtual world",
   },
   {
     _id: uuid(),
     categoryName: "smart-glasses",
     image: Glasses,
-    description:
-    'description 2',
-      // "Smart glasses designed to keep you in the moment",
+    description:"Smart glasses designed to keep you in the moment",
   },
   {
     _id: uuid(),
     categoryName: "soundzy",
     image: Headphones,
-    description:
-    'description 3',
-      // "Best in Sound Quality",
+    description: "Best in Audio - compatible to VR devices",
   },
 ];

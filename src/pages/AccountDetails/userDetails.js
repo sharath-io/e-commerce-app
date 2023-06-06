@@ -1,8 +1,14 @@
+import { useContext } from "react"
+import { AuthContext } from "../.."
+
 export function UserDetails(){
-    console.log('user- details this ')
+    const {authState} = useContext(AuthContext);
+   
     return (
         <div>
             <h1>User Details</h1>
+            <p>First Name: {authState.user.firstName}</p>
+            <p>Last Name: {authState.user.lastName} </p>
         </div>
     )
 }
