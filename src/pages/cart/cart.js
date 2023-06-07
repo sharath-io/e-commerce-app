@@ -37,7 +37,10 @@ export function Cart(){
                            onClick={() => {handleCartQuantityChange(productDispatch, _id, "increment")}}
                             >+</button>
                         </div>
-                        <button  className="card-button" onClick={()=> removeFromCartHandler(productDispatch, _id)}>Remove from Cart</button>
+                        <button  className="card-button" onClick={()=> {
+                            removeFromCartHandler(productDispatch, _id)
+                            toast.success('item removed from cart');
+                        }}>Remove from Cart</button>
                         <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
