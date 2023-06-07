@@ -7,7 +7,7 @@ import { OrderContext } from "../../contexts/orderContext";
 export function CheckOut(){
     const navigate = useNavigate();
     const {state} = useContext(DataContext);
-    const {orderDispatch} = useContext(OrderContext);
+    const {addressDetails,orderDispatch} = useContext(OrderContext);
     const [displayCheckout, setDisplayCheckout] = useState(false);
 
     const totalCartPrice = state.cart.reduce((acc,curr) => acc+Number(curr.sellingPrice)*curr.qty,0);
@@ -31,10 +31,14 @@ export function CheckOut(){
               <div className="checkout-address">
                 <h3>Address Details</h3>
                  {state.address.length === 0 && <p> No Address created <button onClick={()=>navigate('/account-details/addressDetails')} className="card-button">Add Address</button></p>}
-                 {state.address.map(({id, userName,houseNumber, city, state,country,pincode,mobileNumber}) =>{
+                 {state.address.map((address) =>{
+                  const {id, userName,houseNumber, city, state,country,pincode,mobileNumber} = address
                  return (
                   <div key={id} className="each-address">
-                    <p>userName: {userName}</p>
+                    <label><input type="radio" name="selected-address"
+                    onChange={()=> orderDispatch({type: 'SET_ADDRESS_DETAILS',payload:address})}/>userName: {userName}
+                    </label>
+                    
                     <p>{houseNumber} {city} {state}</p>
                     <p>Pincode: {pincode}, {country}</p>
                     <p>Contact Number: {mobileNumber}</p>
@@ -56,10 +60,21 @@ export function CheckOut(){
                         </li>)
                       } 
                     </ul>
+                    {
+                      addressDetails && <div key={addressDetails.id} className="each-address">  
+                      <p>{addressDetails.houseNumber} {addressDetails.city} {addressDetails.state}</p>
+                      <p>Pincode: {addressDetails.pincode}, {addressDetails.country}</p>
+                      <p>Contact Number: {addressDetails.mobileNumber}</p>
+                    </div>
+                    }
+
+                    
                     <button className="card-button btn-primary" onClick={()=> {
                         orderDispatch({type:'SET_ORDER_HISTORY', payload:orderData})
                         setDisplayCheckout(true);
                     }}
+                    
+
                     >Confirm Order</button>
                 </div>
                 </div>

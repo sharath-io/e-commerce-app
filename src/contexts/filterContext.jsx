@@ -29,7 +29,7 @@ export function FilterProvider({children}){
    : priceRangeFilteredData;
 
    const sortRatingdata = filtersState?.ratingNumber?.length > 0 
-   ? categoryFilteredData?.filter(({rating}) => Number(rating) > Number(filtersState.ratingNumber))
+   ? categoryFilteredData?.filter(({rating}) => Number(rating) >= Number(filtersState.ratingNumber))
    : categoryFilteredData;
 
 

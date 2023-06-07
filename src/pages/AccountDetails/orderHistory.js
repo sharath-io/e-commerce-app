@@ -5,7 +5,8 @@ import './orderHistory.css';
 
 export function OrderHistory(){
     const navigate = useNavigate();
-    const {orderHistory} = useContext(OrderContext);
+    const {orderHistory, addressDetails} = useContext(OrderContext);
+    const {id,houseNumber,city,state,pincode,country,mobileNumber} = addressDetails;
 
     return (
         <div>
@@ -29,6 +30,12 @@ export function OrderHistory(){
                                <h3>OrderAmount: {orderAmount}</h3>
                                 </div>)
                         }
+                        <div key={id} className="each-address">
+                            Delivered To:
+                    <p>{houseNumber} {city} {state}</p>
+                    <p>Pincode: {pincode}, {country}</p>
+                    <p>Contact Number: {mobileNumber}</p>
+                  </div>
 
                     </div>)
 }                  
