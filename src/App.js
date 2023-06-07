@@ -6,11 +6,16 @@ import { Navbar } from './components/Navbar/navbar';
 import Mockman from "mockman-js";
 import { ToastContainer } from "react-toastify";
 import { Navigate } from 'react-router-dom';
+import {LoadingSpinner} from './components/Loader/loader';
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from 'react';
+import { DataContext } from './contexts/dataContext';
 
 function App() {
+  const {loader} = useContext(DataContext);
     return (
       <div className="App">
+        {loader && <LoadingSpinner/>}
         <Navbar/>
         <Routes>
           <Route path="/" element={<Home/>}/>

@@ -87,7 +87,7 @@ export function DataProvider({children}){
        authState?.isLoggedIn && setItems();
        const id = setTimeout(()=>{
            setLoader(false);
-       }, 500);
+       }, 1000);
        return () => clearTimeout(id);
       // eslint-disable-next-line
      }, [productDispatch, authState?.isLoggedIn])

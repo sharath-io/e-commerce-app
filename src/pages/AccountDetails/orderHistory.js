@@ -6,7 +6,6 @@ import './orderHistory.css';
 export function OrderHistory(){
     const navigate = useNavigate();
     const {orderHistory} = useContext(OrderContext);
-    console.log(orderHistory);
 
     return (
         <div>
@@ -30,6 +29,7 @@ export function OrderHistory(){
                                <h3>OrderAmount: {orderAmount}</h3>
                                 </div>)
                         }
+
                     </div>)
 }                  
         </div>

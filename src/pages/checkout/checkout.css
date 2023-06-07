@@ -3,6 +3,9 @@
     justify-content: space-evenly;
 }
 
+.each-address{
+    margin: 2rem;
+}
 
 .modal{
     left:0;

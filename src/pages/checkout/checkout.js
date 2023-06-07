@@ -33,15 +33,15 @@ export function CheckOut(){
                  {state.address.length === 0 && <p> No Address created <button onClick={()=>navigate('/account-details/addressDetails')} className="card-button">Add Address</button></p>}
                  {state.address.map(({id, userName,houseNumber, city, state,country,pincode,mobileNumber}) =>{
                  return (
-                  <div key={id}>
+                  <div key={id} className="each-address">
                     <p>userName: {userName}</p>
                     <p>{houseNumber} {city} {state}</p>
                     <p>Pincode: {pincode}, {country}</p>
                     <p>Contact Number: {mobileNumber}</p>
-                    <button onClick={()=>navigate('/account-details/addressDetails')} className="card-button">Add New Address</button>
-              </div>
+                  </div>
                   )
                   } )}
+                  <button onClick={()=>navigate('/account-details/addressDetails')} className="card-button">Add New Address</button>
             </div>
 
                 <div className="checkout-details"  style={{textAlign:"left"}}>
