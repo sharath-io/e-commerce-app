@@ -15,27 +15,12 @@ export function ProductDetail(){
     const {_id,title,image,categoryName,sellingPrice} = selectedProduct;
     return (
         <div>
-            <h1>This is product Details page</h1>
             <div className="product-item" key={_id}>
                         <h4>{title}</h4>
                         <img src={image} alt={title}/>
                         <p>{categoryName}</p>
                         <p>{sellingPrice}</p>
-                        <button onClick={()=>{
-                            if(authState.isLoggedIn){
-                                if(isItemInCart(state.cart, _id)){
-                                    navigate('/cart');
-                                } else{
-                                    addToCartHandler(selectedProduct, productDispatch)
-                                }
-                            }
-                            else{
-                                navigate('/login');
-                            }
-                        }}>
-                            {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
-                        </button>
-                        <button onClick={()=>{
+                        <button className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
                                     navigate('/wishlist');
@@ -48,6 +33,21 @@ export function ProductDetail(){
                             }
                         }}>
                             {isItemInWishlist(state?.wishlist, _id) ? "Go to Wishlist" : "Add to Wishlist"}
+                        </button>
+                        <button className="card-button btn-primary"
+                        onClick={()=>{
+                            if(authState.isLoggedIn){
+                                if(isItemInCart(state.cart, _id)){
+                                    navigate('/cart');
+                                } else{
+                                    addToCartHandler(selectedProduct, productDispatch)
+                                }
+                            }
+                            else{
+                                navigate('/login');
+                            }
+                        }}>
+                            {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
                         </button>
             </div>
         </div>
