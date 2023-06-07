@@ -6,6 +6,7 @@ import {addToWishlistHandler} from '../../utils/wishlist-utils/addToWishlisthand
 import { removeFromCartHandler } from "../../utils/cart-utils/removeFromCartHandler";
 import {handleCartQuantityChange} from '../../utils/cart-utils/handleCartQuantityChange';
 import './cart.css';
+import { toast } from "react-toastify";
 
 export function Cart(){
     const navigate = useNavigate();
@@ -14,11 +15,11 @@ export function Cart(){
     return (
         <div>
             <h1>Cart page</h1>
+            {state.cart.length===0 ? <p>Cart is empty</p> :
             <div className="cart-container">
             <ul className="cart-listing">
                 {
-                    state.cart.length===0 ? <p>Cart is empty</p>
-                    : state.cart?.map((product) =>{
+                    state.cart?.map((product) =>{
                         const {_id,title,image,categoryName,sellingPrice} = product;
                         
                     return (<li className="product-item card-item" key={_id}>
@@ -43,6 +44,7 @@ export function Cart(){
                                     navigate('/wishlist');
                                 } else{
                                     addToWishlistHandler(product, productDispatch)
+                                    toast.success('item added to  wishlist');
                                 }
                             }
                             else{
@@ -58,9 +60,9 @@ export function Cart(){
                <h1>cart Total Details:</h1>
                <p>Total Cart Items: ({state.cart.reduce((totalCart,product) => totalCart+product.qty,0)})</p>
                <p>Total Price : {state.cart.reduce((acc,curr) => acc+Number(curr.sellingPrice)*curr.qty,0)}</p>
-               <button className="card-button btn-primary">Confirm Order</button>
+               <button className="card-button btn-primary" onClick={()=> navigate('/checkout')}>Checkout</button>
             </div>
-            </div>
+            </div>}
         </div>
     )
 }

@@ -10,7 +10,6 @@ export const initialOrder = {
     orderHistory: [],
   };
   export const orderReducer = (state, action) => {
-    console.log(action.payload);
     switch (action.type) {
       case "SET_PRICE_DETAILS":
         const { price, discount, coupon, totalAmt, totalDiscount } =

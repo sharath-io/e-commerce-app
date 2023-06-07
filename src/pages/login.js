@@ -41,8 +41,8 @@ export function Login(){
                 <label>Password: </label>
                 <input type="password" placeholder="enter your password"
                   onChange={(e)=> setUserData((prev)=> ({...prev,password:e.target.value}))} required/></div>
-              <div><button className="btn-primary" onClick={loginHandler}>Login</button></div>
-              <div><button onClick={loginAsGuestHandler}>Login as a guest user</button></div>
+              <div><button className="btn-primary card-button" onClick={loginHandler}>Login</button></div>
+              <div><button onClick={loginAsGuestHandler} className="card-button">Login as a guest user</button></div>
               <div onClick={()=> navigate('/signup')} className="new-account">New account</div>
             </form>
     </div>

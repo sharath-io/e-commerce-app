@@ -17,7 +17,7 @@ export function EditAddress(editAddressId){
 
 
     return (
-        <div>
+        <div className="edit-address-form">
             <h4>Edit Address</h4>
             <form>
                 <input type="text" name ="userName" placeholder="Enter Name" value={editAddress.userName} onChange={(e)=>setEditAddress((editAddress) => ({...editAddress, [e.target.name]: e.target.value}))} required/>
@@ -27,8 +27,8 @@ export function EditAddress(editAddressId){
                 <input type="text" name ="country" placeholder="Enter Country" value={editAddress.country} onChange={(e)=>setEditAddress((editAddress) => ({...editAddress, [e.target.name]: e.target.value}))} required/>
                 <input type="number" name ="pincode" placeholder="Enter Pincode" value={editAddress.pincode} onChange={(e)=>setEditAddress((editAddress) => ({...editAddress, [e.target.name]: e.target.value}))} required/>
                 <input type="number" name ="mobileNumber" placeholder="Enter Number" value={editAddress.mobileNumber} onChange={(e)=>setEditAddress((editAddress) => ({...editAddress, [e.target.name]: e.target.value}))} required/>
-                <button onClick={()=> productDispatch({type:'SAVE_EDITED_ADDRESS', payload:[editAddress, editAddressId]})}>Edit</button>
-                <button onClick={()=> productDispatch({type:'CANCEL_EDITED_ADDRESS', payload:editAddressId})}>Cancel</button>
+                <button type="submit" onClick={()=> productDispatch({type:'SAVE_EDITED_ADDRESS', payload:[editAddress, editAddressId]})} className="card-button">Update</button>
+                <button type="submit" onClick={()=> productDispatch({type:'CANCEL_EDITED_ADDRESS', payload:editAddressId}) } className="card-button">Cancel</button>
             </form>
 
         </div>

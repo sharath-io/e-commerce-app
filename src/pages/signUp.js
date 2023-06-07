@@ -59,7 +59,7 @@ export function SignUp(){
               <input type="password" placeholder="enter your password"
               onChange={(e)=> setUserDetails((prev)=> ({...prev, confirmPassword:e.target.value}))}/>
               </div>
-              <div><button className="btn-primary" onClick={signupHandler}>Register</button></div>
+              <div><button className="btn-primary card-button" onClick={signupHandler}>Register</button></div>
               <div onClick={()=> navigate('/login')} className="new-account">Have an Account Already</div>
             </form>
     </div>

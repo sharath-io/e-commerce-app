@@ -6,6 +6,7 @@ import {addToCartHandler} from '../../utils/cart-utils/addToCarthandler';
 import {isItemInWishlist} from '../../utils/wishlist-utils/isItemInWishlist';
 import {addToWishlistHandler} from '../../utils/wishlist-utils/addToWishlisthandler';
 import './products.css';
+import { toast } from "react-toastify";
 
 export function Products(){
     const navigate = useNavigate();
@@ -124,6 +125,7 @@ export function Products(){
                                     navigate('/wishlist');
                                 } else{
                                     addToWishlistHandler(product, productDispatch)
+                                    toast.success('item added to wishlist');
                                 }
                             }
                             else{
@@ -137,7 +139,8 @@ export function Products(){
                                 if(isItemInCart(state.cart, _id)){
                                     navigate('/cart');
                                 } else{
-                                    addToCartHandler(product, productDispatch)
+                                    addToCartHandler(product, productDispatch);
+                                    toast.success('item added to cart');
                                 }
                             }
                             else{
@@ -146,16 +149,10 @@ export function Products(){
                         }}>
                             {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
                         </button>
-
-
-
-
                     </li>)})
                 }
             </ul>
-
         </div>
-            
     </div>
     )
 }

@@ -34,8 +34,8 @@ export function AddressForm({setIsAddAddress}) {
                 <input type="text" name ="country" placeholder="Enter Country" value={addressForm.country} onChange={(e) => handleFormInputChange(e)} required/>
                 <input type="number" name ="pincode" placeholder="Enter Pincode" value={addressForm.pincode} onChange={(e) => handleFormInputChange(e)} required/>
                 <input type="number" name ="mobileNumber" placeholder="Enter Number" value={addressForm.mobileNumber} onChange={(e) => handleFormInputChange(e)} required/>
-                <button type="submit">Add Address</button>
-                <button onClick={()=> setIsAddAddress(false)}>Cancel</button>
+                <button type="submit" className="card-button">Add Address</button>
+                <button onClick={()=> setIsAddAddress(false)} className="card-button">Cancel</button>
             </form>
         </div>
     )

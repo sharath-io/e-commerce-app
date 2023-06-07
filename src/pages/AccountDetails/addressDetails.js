@@ -11,7 +11,11 @@ export function AddressDetails(){
         <div>
             <h1>address Details</h1>
             <div>
-              {state.address.length === 0 && <p> No Address created</p>}
+              {state.address.length === 0 && 
+              <div>
+                <p> No Address created <button onClick={()=>setIsAddAddress(true)} className="card-button">Add Address</button></p>
+                {isAddAddress && <AddressForm setIsAddAddress ={setIsAddAddress}/>}
+            </div>}
               {state.address.map(({id, userName,houseNumber, city, state,country,pincode,mobileNumber,isEdit}) =>{
                return (
                 <div key={id}>
@@ -20,9 +24,9 @@ export function AddressDetails(){
                     <p>Pincode: {pincode}, {country}</p>
                     <p>Contact Number: {mobileNumber}</p>
                     {isEdit && <EditAddress editAddressId={id}/>}
-                    <button onClick={()=> productDispatch({type:'EDIT_ADDRESS', payload: id})}>Edit</button>
-                    <button onClick={()=> productDispatch({type:'DELETE_USER_ADDRESS', payload: id })}>DELETE</button>
-                    <button onClick={()=>setIsAddAddress(true)}>Add New Address</button>
+                    <button onClick={()=> productDispatch({type:'EDIT_ADDRESS', payload: id})} className="card-button">Edit</button>
+                    <button onClick={()=> productDispatch({type:'DELETE_USER_ADDRESS', payload: id })} className="card-button">DELETE</button>
+                    <button onClick={()=>setIsAddAddress(true)} className="card-button">Add New Address</button>
                     {isAddAddress && <AddressForm setIsAddAddress ={setIsAddAddress}/>}
                 </div>
                )

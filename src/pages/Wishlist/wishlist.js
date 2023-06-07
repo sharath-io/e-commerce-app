@@ -5,6 +5,7 @@ import {isItemInCart} from '../../utils/cart-utils/isItemInCart';
 import {addToCartHandler} from '../../utils/cart-utils/addToCarthandler';
 import { removeFromWishlistHandler } from "../../utils/wishlist-utils/removeFromWishlistHandler";
 import './wishlist.css';
+import { toast } from "react-toastify";
 
 export function Wishlist(){
     const navigate = useNavigate();
@@ -23,14 +24,18 @@ export function Wishlist(){
                         <img src={image} alt={title} className="product-img"/>
                         <p>{categoryName}</p>
                         <p>{price}</p>
-                        <button className="card-button" onClick={()=> removeFromWishlistHandler(productDispatch, _id)}>Remove from Wishlist</button>
+                        <button className="card-button" onClick={()=> {
+                            removeFromWishlistHandler(productDispatch, _id)
+                            toast.success('Removed from wishlist')
+                        }}>Remove from Wishlist</button>
                         <button className="card-button btn-primary"
                           onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInCart(state.cart, _id)){
                                     navigate('/cart');
                                 } else{
-                                    addToCartHandler(product, productDispatch)
+                                    addToCartHandler(product, productDispatch);
+                                    toast.success('item added to cart');
                                 }
                             }
                             else{

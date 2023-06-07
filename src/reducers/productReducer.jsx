@@ -17,7 +17,7 @@ export const productReducer = (state, action) => {
             : addressData
             )};
         case 'CANCEL_EDITED_ADDRESS': return {...state, address:
-           state.address.map((addressData) => addressData.id===action.payload
+           state.address.map((addressData) => addressData.id===Number(action.payload)
            ? {...addressData, isEdit: false}
            : addressData
            )}
