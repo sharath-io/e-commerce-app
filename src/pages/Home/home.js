@@ -1,10 +1,11 @@
 import {useContext} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { DataContext, FilterContext } from "../.."
 import { Banner } from '../../assets';
 import './home.css';
 
 export function Home(){
+    const navigate = useNavigate();
     const {state} = useContext(DataContext);
     const {dispatchFilter} = useContext(FilterContext);
     return (
@@ -16,9 +17,10 @@ export function Home(){
                  <div className="meta-info">
                     <p>Get your physical devices for virtual world</p>
                     <div>
-                        <NavLink to="/products">
-                           <button className="explore-products">Meta devices {" "} {" "} {" "}&gt;</button>
-                        </NavLink>
+                           <button className="explore-products"
+                            onClick={()=> {
+                                dispatchFilter({type:'CLEAR_ALL_FILTERS'})
+                                navigate('/products')}}>Meta devices {" "} {" "} {" "}&gt;</button>
                     </div>
                  </div>
             </div>
