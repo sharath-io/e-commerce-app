@@ -39,3 +39,8 @@
     margin: 1.2rem;
   }
 
+  .btn-container{
+    display: flex;
+    justify-content: space-evenly;
+  }
+

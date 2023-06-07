@@ -119,6 +119,7 @@ export function Products(){
                         <NavLink to={`/product/${_id}`}><p className="learn-more">view Details</p></NavLink>
                         <p>rating : {rating} </p>
                         
+                        <div className="btn-container">
                         <button  className="card-button" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
@@ -149,6 +150,7 @@ export function Products(){
                         }}>
                             {isItemInCart(state?.cart, _id) ? "Go to Cart" : "Add to Cart"}
                         </button>
+                        </div>
                     </li>)})
                 }
             </ul>
