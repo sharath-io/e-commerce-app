@@ -56,24 +56,3 @@
   background-color: #384c54;
   color: white;
 }
-
-.login-container{
-  border: 1px solid green;
-  border-radius: 1rem;
-  width: 25rem;
-  margin: 0 auto;
-  padding: 3rem;
-}
-
-.login-container div{
-  padding: 0.5rem;
-}
-
-.login-container div label{
-  display: block;
-}
-
-.new-account{
-  text-decoration-line: underline;
-  cursor: pointer;
-}
