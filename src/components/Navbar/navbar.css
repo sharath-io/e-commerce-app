@@ -26,6 +26,7 @@
 .search-filter{
   font-size: 19px;
   width: 24rem;
-  padding: 2px 4px;
+  padding: 2px 9px;
   border-radius: 40px;
+  background-color: #eef3f8;;
 }
