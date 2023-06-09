@@ -1,8 +1,7 @@
 import { removeFromCartHandler } from "./removeFromCartHandler";
-const clearCartItems = (productDispatch, dataState) => {
-  for (const item of dataState?.cart) {
+
+export const clearCartItems = (state,productDispatch) => {
+  for (const item of state?.cart) {
     removeFromCartHandler(productDispatch, item?._id);
   }
 };
-
-export default clearCartItems;
