@@ -1,5 +1,6 @@
 import {useContext} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+
 import { DataContext, FilterContext } from "../.."
 import { Banner } from '../../assets';
 import './home.css';
@@ -8,6 +9,7 @@ export function Home(){
     const navigate = useNavigate();
     const {state} = useContext(DataContext);
     const {dispatchFilter} = useContext(FilterContext);
+    
     return (
          <div className="main-content">
              <div>
