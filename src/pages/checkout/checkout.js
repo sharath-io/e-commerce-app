@@ -11,13 +11,15 @@ export function CheckOut(){
     const {state, productDispatch} = useContext(DataContext);
     const {addressDetails,orderDispatch} = useContext(OrderContext);
     const [displayCheckout, setDisplayCheckout] = useState(false);
+    const [displayDeliveryAddress, setDisplayDeliveryAddress] = useState(false);
 
     const totalCartPrice = state.cart.reduce((acc,curr) => acc+Number(curr.sellingPrice)*curr.qty,0);
     const totalCartItems = state.cart.reduce((totalCart,product) => totalCart+product.qty,0);
 
     const orderData = {
         orderItems: [...state.cart],
-        orderAmount: totalCartPrice
+        orderAmount: totalCartPrice,
+        deliveryAddress: addressDetails
     }
 
     return (
@@ -37,8 +39,11 @@ export function CheckOut(){
                     const {id, userName,houseNumber, city, state,country,pincode,mobileNumber} = address
                     return (
                      <div key={id} className="each-address">
-                       <label><input type="radio" name="selected-address" checked='checked'
-                       onChange={()=> orderDispatch({type: 'SET_ADDRESS_DETAILS',payload:address})}/>userName: {userName}
+                       <label><input type="radio" name="selected-address"
+                       onChange={()=> {
+                        orderDispatch({type: 'SET_ADDRESS_DETAILS',payload:address})
+                        setDisplayDeliveryAddress(true)
+                       }}/>userName: {userName}
                        </label>
                     
                         <p>{houseNumber} {city} {state}</p>
@@ -62,22 +67,29 @@ export function CheckOut(){
                       } 
                     </ul>
                     {
-                      addressDetails && <div key={addressDetails.id} className="each-address">  
-                      <p>{addressDetails.houseNumber} {addressDetails.city} {addressDetails.state}</p>
-                      <p>Pincode: {addressDetails.pincode}, {addressDetails.country}</p>
-                      <p>Contact Number: {addressDetails.mobileNumber}</p>
-                    </div>
+                       displayDeliveryAddress ? <div key={addressDetails.id} className="each-address"> 
+                                                    <p>Delivery Address </p> 
+                                                    <hr/>
+                                                    <p>House No. {addressDetails.houseNumber}</p>
+                                                    <p>City: {addressDetails.city}</p>
+                                                    <p>State: {addressDetails.state}</p>
+                                                    <p>Pincode: {addressDetails.pincode}</p>
+                                                    <p>Country:  {addressDetails.country}</p>
+                                                    <p>Contact Number: {addressDetails.mobileNumber}</p>
+                                                  </div>
+                                               : <div>
+                                                  <p> select delivery address</p>
+                                                  </div>
                     }
 
-                    
-                    <button className="card-button btn-primary" onClick={()=> {
+                    {displayDeliveryAddress &&
+                    <button className="card-button btn-primary"
+                       onClick={()=> {
                         orderDispatch({type:'SET_ORDER_HISTORY', payload:orderData})
                         setDisplayCheckout(true);
                         clearCartItems(state,productDispatch);
                     }}
-                    
-
-                    >Confirm Order</button>
+                    >Confirm Order</button>}
                   </div>
                 </div>
                 }
