@@ -37,7 +37,7 @@ export function CheckOut(){
                     const {id, userName,houseNumber, city, state,country,pincode,mobileNumber} = address
                     return (
                      <div key={id} className="each-address">
-                       <label><input type="radio" name="selected-address"
+                       <label><input type="radio" name="selected-address" checked='checked'
                        onChange={()=> orderDispatch({type: 'SET_ADDRESS_DETAILS',payload:address})}/>userName: {userName}
                        </label>
                     

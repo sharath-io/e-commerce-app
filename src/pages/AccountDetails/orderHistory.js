@@ -1,7 +1,8 @@
 import { useContext } from "react"
-import { OrderContext } from "../../contexts/orderContext"
 import { useNavigate } from "react-router-dom";
-import './orderHistory.css';
+
+import { OrderContext } from "../../contexts/orderContext"
+import './profile.css';
 
 export function OrderHistory(){
     const navigate = useNavigate();
@@ -9,9 +10,9 @@ export function OrderHistory(){
     const {id,houseNumber,city,state,pincode,country,mobileNumber} = addressDetails;
 
     return (
-        <div>
-            <h1>Your Orders - {orderHistory.length}</h1>
-            {
+            <div>
+             <h2  className="profile-active-heading">Your Orders - {orderHistory.length}</h2>
+             {
                 orderHistory.length === 0  
                 ? (<div>
                         <p>Your haven't ordered </p> 
@@ -32,13 +33,12 @@ export function OrderHistory(){
                         }
                         <div key={id} className="each-address">
                             Delivered To:
-                    <p>{houseNumber} {city} {state}</p>
-                    <p>Pincode: {pincode}, {country}</p>
-                    <p>Contact Number: {mobileNumber}</p>
-                  </div>
-
+                            <p>{houseNumber} {city} {state}</p>
+                            <p>Pincode: {pincode}, {country}</p>
+                            <p>Contact Number: {mobileNumber}</p>
+                        </div>
                     </div>)
-}                  
-        </div>
- )
+             }     
+            </div>
+          )
 }

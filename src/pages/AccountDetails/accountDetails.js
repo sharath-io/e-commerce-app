@@ -1,17 +1,23 @@
-import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import {AuthContext} from '../../contexts/authenticationContext';
+
+import { getActiveStyle } from "../../utils/getActiveStyle";
+import './profile.css';
 
 export function AccountDetails(){
-    const {userLogout} = useContext(AuthContext);
+    
     return (
         <div>
-            <h1>Account Details</h1>
-            <NavLink to="/account-details/userDetails">User Details ||</NavLink>
-            <NavLink to="/account-details/addressDetails">Address Details ||</NavLink>
-            <NavLink to="/account-details/orderDetails">Order History ||</NavLink>
-            <div> <Outlet/></div>
-            <button onClick={userLogout} className="card-button">Logout</button>
+          <h1>Account</h1>
+          <div  className="profile-page">   
+            <div className="form-container">
+              <div  className="profile-nav">
+                <NavLink to="/account-details/userDetails" className="profile-heading" style={getActiveStyle }>User Details</NavLink>
+                <NavLink to="/account-details/addressDetails"  className="profile-heading"  style={getActiveStyle }>Address Details</NavLink>
+                <NavLink to="/account-details/orderDetails"  className="profile-heading"  style={getActiveStyle }>Order History</NavLink>
+              </div>
+              <div> <Outlet/></div>
+            </div>  
+           </div>
         </div>
     )
 }

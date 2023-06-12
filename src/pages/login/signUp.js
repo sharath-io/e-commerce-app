@@ -64,7 +64,7 @@ export function SignUp(){
                
               <label  className="form-input">Confirm password:
                <div  className="password-container"> 
-                <input type={isConfirmPasswordVisible ? 'text' : "password"}  placeholder={isConfirmPasswordVisible? "enter password again" : "********"} required
+                <input type={isConfirmPasswordVisible ? 'text' : "password"}  placeholder={isConfirmPasswordVisible? "confirm password" : "********"} required
                    onChange={(e)=> setUserDetails((prev)=> ({...prev, confirmPassword:e.target.value}))}/>
                 <i className={isConfirmPasswordVisible ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} onClick={()=> setIsConfirmPasswordVisible(!isConfirmPasswordVisible)}></i>
                </div>
