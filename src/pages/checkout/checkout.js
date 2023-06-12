@@ -1,8 +1,7 @@
 import { useContext,useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DataContext } from "../../contexts/dataContext";
+import { DataContext, OrderContext, AuthContext } from "../..";
 
-import { OrderContext } from "../../contexts/orderContext";
 import { clearCartItems } from "../../utils/cart-utils/clearCartItems";
 import './checkout.css';
 
@@ -10,6 +9,7 @@ export function CheckOut(){
     const navigate = useNavigate();
     const {state, productDispatch} = useContext(DataContext);
     const {addressDetails,orderDispatch} = useContext(OrderContext);
+    const {authState} = useContext(AuthContext);
     const [displayCheckout, setDisplayCheckout] = useState(false);
     const [displayDeliveryAddress, setDisplayDeliveryAddress] = useState(false);
 
@@ -19,7 +19,8 @@ export function CheckOut(){
     const orderData = {
         orderItems: [...state.cart],
         orderAmount: totalCartPrice,
-        deliveryAddress: addressDetails
+        deliveryAddress: addressDetails,
+        userEmail: authState.user.email
     }
 
     return (

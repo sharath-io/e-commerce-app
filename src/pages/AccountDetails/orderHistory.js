@@ -1,25 +1,31 @@
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom";
 
-import { OrderContext } from "../../contexts/orderContext"
+import { OrderContext,AuthContext } from "../.."
 import './profile.css';
 
 export function OrderHistory(){
     const navigate = useNavigate();
-    const {orderHistory} = useContext(OrderContext)
+    const {orderHistory} = useContext(OrderContext);
+    const {authState} = useContext(AuthContext);
+
+    const userOrderHistory =
+      orderHistory &&
+      authState.user &&
+      orderHistory?.filter(({userEmail}) => userEmail === authState?.user?.email);
 
     return (
             <div>
-              <h2  className="profile-active-heading">Your Orders - {orderHistory.length}</h2>
+              <h2  className="profile-active-heading">Your Orders - {userOrderHistory.length}</h2>
               {
-                orderHistory.length === 0  
+                userOrderHistory.length === 0  
                 ? (<div>
                         <p>Your haven't ordered </p> 
                          <button onClick={()=> navigate('/products')} className="card-button">Shop Now </button>
                    </div>) 
                 :  (<div className="order-history-container">
                         {
-                            orderHistory.map(({orderItems, orderAmount,deliveryAddress}) => <div>
+                            userOrderHistory.map(({orderItems, orderAmount,deliveryAddress}) => <div>
                                <h3> orderItems : </h3>
                                <ul>
                                 {
