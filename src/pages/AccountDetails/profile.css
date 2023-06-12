@@ -51,7 +51,8 @@
 
 
 .order-history-container{
-  padding: 2rem;
+  padding: 1rem;
+  text-align: left;
 }
 
 .order-history-container div{
