@@ -118,7 +118,7 @@ export function Products(){
                         </div>
                         
                         <div className="btn-container">
-                        <button  className="card-button" onClick={()=>{
+                        <button  className="card-button cta-btn" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
                                     navigate('/wishlist');
@@ -133,7 +133,7 @@ export function Products(){
                         }}>
                             {isItemInWishlist(state?.wishlist, _id) ? "Go to Wishlist" : "Add to Wishlist"}
                         </button>
-                        <button className="card-button btn-primary" onClick={()=>{
+                        <button className="card-button btn-primary cta-btn" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInCart(state.cart, _id)){
                                     navigate('/cart');
