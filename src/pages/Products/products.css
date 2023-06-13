@@ -10,6 +10,10 @@
     margin: 1rem;
   }
 
+  .select-product{
+    cursor: pointer;
+  }
+
   .filter-container{
     width: 20%;
   }
