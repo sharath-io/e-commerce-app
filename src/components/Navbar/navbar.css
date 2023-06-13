@@ -3,10 +3,16 @@
   justify-content:space-between;
   font-size: 1rem;
   border: 1px solid black;
-  padding: 2rem;
+  padding: 1.5rem;
   text-decoration: none;
   font-size: larger;
   color: black;
+}
+
+.ecom-name{
+  font-style: italic;
+  font-weight: bolder;
+  color: #384c54
 }
 
 .nav-link{
@@ -15,11 +21,18 @@
   text-decoration: none;
   }
 
-  .header{
-    margin: 0;
-    padding: 7px;
-    background-color: #384c54;
-    color: white;
-    font-size: 16px;
+.header{
+  margin: 0;
+  padding: 5px;
+  background-color: #384c54;
+  color: white;
+  font-size: 16px;
   }
 
+.search-filter{
+  font-size: 19px;
+  width: 24rem;
+  padding: 2px 9px;
+  border-radius: 40px;
+  background-color: #eef3f8;
+}

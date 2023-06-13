@@ -10,6 +10,10 @@
     margin: 1rem;
   }
 
+  .select-product{
+    cursor: pointer;
+  }
+
   .filter-container{
     width: 20%;
   }
@@ -44,3 +48,6 @@
     justify-content: space-evenly;
   }
 
+  .cta-btn{
+    width: 7.9rem;
+ }

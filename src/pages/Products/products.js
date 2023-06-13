@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import {NavLink, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import {AuthContext, DataContext, FilterContext } from "../.."
 import {isItemInCart} from '../../utils/cart-utils/isItemInCart';
 import {addToCartHandler} from '../../utils/cart-utils/addToCarthandler';
@@ -19,8 +19,6 @@ export function Products(){
             <h1>Meta Products - {sortFilteredData.length}</h1>
             <div className="productsListing-container">
              <div className="filter-container">
-
-
                 <div className="clear-filter filter-item">
                   <button  className="card-button" onClick={()=> dispatchFilter({type:'CLEAR_ALL_FILTERS'})}>Clear Filters</button>
                 </div>
@@ -111,16 +109,16 @@ export function Products(){
                     sortFilteredData?.map((product) => {
                         const {_id,title,image,categoryName,originalPrice,sellingPrice,rating} = product;
                     return (<li className="product-item card-item" key={_id}>
-                        <h4>{title}</h4>
-                        <img src={image} alt={title} className="product-img"/>
-                        <p>{categoryName}</p>
-                        
-                        <p><span style={{textDecoration:'line-through'}}>{originalPrice}</span> $ {sellingPrice} USD</p>
-                        <NavLink to={`/product/${_id}`}><p className="learn-more">view Details</p></NavLink>
-                        <p>rating : {rating} </p>
+                        <div onClick={()=> navigate(`/product/${_id}`)} className="select-product">
+                          <h4>{title}</h4>
+                          <img src={image} alt={title} className="product-img"/>
+                          <p>{categoryName}</p>
+                          <p><span style={{textDecoration:'line-through'}}>{originalPrice}</span> $ {sellingPrice} USD</p>
+                          <p>rating : {rating} </p>
+                        </div>
                         
                         <div className="btn-container">
-                        <button  className="card-button" onClick={()=>{
+                        <button  className="card-button cta-btn" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInWishlist(state.wishlist, _id)){
                                     navigate('/wishlist');
@@ -135,7 +133,7 @@ export function Products(){
                         }}>
                             {isItemInWishlist(state?.wishlist, _id) ? "Go to Wishlist" : "Add to Wishlist"}
                         </button>
-                        <button className="card-button btn-primary" onClick={()=>{
+                        <button className="card-button btn-primary cta-btn" onClick={()=>{
                             if(authState.isLoggedIn){
                                 if(isItemInCart(state.cart, _id)){
                                     navigate('/cart');

@@ -1,25 +1,31 @@
 import { useContext } from "react"
-import { OrderContext } from "../../contexts/orderContext"
 import { useNavigate } from "react-router-dom";
-import './orderHistory.css';
+
+import { OrderContext,AuthContext } from "../.."
+import './profile.css';
 
 export function OrderHistory(){
     const navigate = useNavigate();
-    const {orderHistory, addressDetails} = useContext(OrderContext);
-    const {id,houseNumber,city,state,pincode,country,mobileNumber} = addressDetails;
+    const {orderHistory} = useContext(OrderContext);
+    const {authState} = useContext(AuthContext);
+
+    const userOrderHistory =
+      orderHistory &&
+      authState.user &&
+      orderHistory?.filter(({userEmail}) => userEmail === authState?.user?.email);
 
     return (
-        <div>
-            <h1>Your Orders - {orderHistory.length}</h1>
-            {
-                orderHistory.length === 0  
+            <div>
+              <h2  className="profile-active-heading">Your Orders - {userOrderHistory.length}</h2>
+              {
+                userOrderHistory.length === 0  
                 ? (<div>
                         <p>Your haven't ordered </p> 
                          <button onClick={()=> navigate('/products')} className="card-button">Shop Now </button>
                    </div>) 
                 :  (<div className="order-history-container">
                         {
-                            orderHistory.map(({orderItems, orderAmount}) => <div>
+                            userOrderHistory.map(({orderItems, orderAmount,deliveryAddress}) => <div>
                                <h3> orderItems : </h3>
                                <ul>
                                 {
@@ -28,17 +34,18 @@ export function OrderHistory(){
                                 }
                                </ul>
                                <h3>OrderAmount: {orderAmount}</h3>
+                               
+                               <div key={deliveryAddress.id} className="each-address">
+                                  Delivered To:
+                                  <p>{deliveryAddress.houseNumber} {deliveryAddress.city} {deliveryAddress.state}</p>
+                                  <p>Pincode: {deliveryAddress.pincode}, {deliveryAddress.country}</p>
+                                  <p>Contact Number: {deliveryAddress.mobileNumber}</p>
+                                </div>
+                                <hr/>
                                 </div>)
-                        }
-                        <div key={id} className="each-address">
-                            Delivered To:
-                    <p>{houseNumber} {city} {state}</p>
-                    <p>Pincode: {pincode}, {country}</p>
-                    <p>Contact Number: {mobileNumber}</p>
-                  </div>
-
+                        }   
                     </div>)
-}                  
-        </div>
- )
+              }     
+            </div>
+          )
 }

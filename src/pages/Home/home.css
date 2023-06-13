@@ -6,8 +6,9 @@
     color: white;
     font-size: 3rem;
     font-weight: bolder;
-    padding: 10rem 1rem
+    padding: 10rem 1rem;
 }
+
 .banner-img {
     height: 38rem;
     width: 100%;
@@ -27,7 +28,6 @@
     top: 0rem;
     left: 0rem;
     right: 50rem;
-    bottom: 2rem;
     text-align: left;
 }
 
