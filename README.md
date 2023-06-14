@@ -1,3 +1,30 @@
-## E-Commerce Backend
+# E-Commerce Project
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+## [meta-store](https://meta-store.netlify.app/)
+
+
+### Features
+* Home Page
+* Product Listing Page
+* Single Product Page
+* Filters by
+  - Price
+  - Category
+  - Ratings
+* Wishlist Management
+* Cart Management
+* Search
+* Loading & Alerts
+* Authentication
+  - Sign-up
+  - Login
+  - Logout
+* Address Management
+* Checkout
+
+
+### Built with -
+* React JS
+* React useContext + useReducer
+* React Router
+* Vanilla CSS
