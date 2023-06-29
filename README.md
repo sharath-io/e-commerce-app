@@ -2,6 +2,8 @@
 
 ## [meta-store](https://meta-store.netlify.app/)
 
+An ecommerce platform for all meta products
+
 
 ### Features
 * Home Page
