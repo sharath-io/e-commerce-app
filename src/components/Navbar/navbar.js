@@ -10,7 +10,7 @@ export function Navbar(){
 
     const {state} = useContext(DataContext);
     const {authState} = useContext(AuthContext);
-    const {dispatchFilter} = useContext(FilterContext);  
+    const {filtersState,dispatchFilter} = useContext(FilterContext);  
 
     return (
         <div>
@@ -19,7 +19,7 @@ export function Navbar(){
             <div className="nav-container">
               <NavLink to="/"  className="nav-link ecom-name">Meta-Store</NavLink>
               {localState.pathname==='/products' && <label>
-                <input type="text" placeholder="Search products" className="search-filter"
+                <input type="text" placeholder="Search products" className="search-filter" value={filtersState.search}
                 onChange={(e)=> dispatchFilter({type:'SEARCH_TEXT', payload: e.target.value})}/>
               </label>}
 
